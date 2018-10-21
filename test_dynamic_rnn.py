@@ -26,7 +26,7 @@ def my_dynamic_rnn(cell, sequence_length, inputs, time_major=True):
           #   output_logits = tf.add(tf.matmul(previous, W), b)
             # prediction = tf.argmax(output_logits, axis=1)
           #   next_input = tf.nn.embedding_lookup(embedding, prediction)
-            next_input = inputs_ta[time]
+            next_input = inputs_ta.read(time)
             return next_input
         
         elements_finished = (time >= sequence_length)
